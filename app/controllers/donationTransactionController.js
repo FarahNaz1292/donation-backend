@@ -13,7 +13,7 @@ const createDonationTransaction = async (req, res) => {
         .send(
           response.createErrorResponse(
             status.status.NOT_FOUND,
-            "No donation  found",
+            "No donation found",
             result
           )
         );
@@ -22,7 +22,6 @@ const createDonationTransaction = async (req, res) => {
     const donationTransaction = new donationTransactions({
       donorID,
       donationID,
-
       message,
     });
     await donationTransaction.save();

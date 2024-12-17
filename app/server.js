@@ -7,6 +7,7 @@ const donationRoutes = require("./router/donationRouter");
 const fundraisingRoutes = require("./router/fundraisingRouter");
 const fundTransactionRoutes = require("./router/fundTransactionRouter");
 const donationTransactionRoutes = require("./router/donationTransactionRouter");
+const allTransactionRoutes = require("./router/allTransactionRouter");
 
 const port = 5000;
 
@@ -26,6 +27,7 @@ app.use("/api", donationRoutes);
 app.use("/api", fundraisingRoutes);
 app.use("/api", fundTransactionRoutes);
 app.use("/api", donationTransactionRoutes);
+app.use("/api", allTransactionRoutes);
 
 app.get("/", (req, res) => {
   res.send("Hello World!");
