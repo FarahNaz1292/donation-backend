@@ -7,11 +7,11 @@ const allTransaction = async (req, res) => {
   try {
     const allDonationTransaction = await donationTransactions
       .find()
-      .populate("donorID", "username email")
+      .populate("donorID", "userName email")
       .populate("donationID", "title amount category");
     const allFundraiserTransaction = await fundraiserTransactions
       .find()
-      .populate("donorID", "title amount ")
+      .populate("donorID", " userName email")
       .populate("fundRaisingID", "title amount");
     const result = [...allDonationTransaction, ...allFundraiserTransaction];
     res
@@ -40,12 +40,12 @@ const getTransactionById = async (req, res) => {
     const { id } = req.params;
     const allDonationTransaction = await donationTransactions
       .find({ donorID: id })
-      .populate("donorID", "username email")
+      .populate("donorID", "userName email")
       .populate("donationID", "title amount category");
     const allFundraiserTransaction = await fundraiserTransactions
       .find({ donorID: id })
-      .populate("donorID", "title amount category")
-      .populate("fundraisingID", "title amount category");
+      .populate("donorID", "userName email")
+      .populate("fundRaisingID", "title amount ");
     const result = [...allDonationTransaction, ...allFundraiserTransaction];
     res
       .status(status.status.OK)

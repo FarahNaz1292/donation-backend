@@ -54,6 +54,7 @@ const signin = async (req, res) => {
         );
     }
     const token = generateToken(user);
+    console.log(token);
 
     res.cookie("accessToken", token, {
       secure: true,
