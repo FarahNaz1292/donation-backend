@@ -9,12 +9,12 @@ const fundTransactionRoutes = require("./router/fundTransactionRouter");
 const donationTransactionRoutes = require("./router/donationTransactionRouter");
 const allTransactionRoutes = require("./router/allTransactionRouter");
 
-const port = 5000;
+const port = 5001;
 
 //Middleware
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: "*", // Or a safer domain if needed
     credentials: true,
   })
 );
@@ -33,6 +33,10 @@ app.get("/", (req, res) => {
   res.send("Hello World!");
 });
 
-app.listen(port, () => {
-  console.log(`Example app listening on port ${port}`);
-});
+if (process.env.NODE_ENV !== 'production') {
+  const port = process.env.PORT || 5002;
+  app.listen(port, () => {
+    console.log(`Example app listening on port ${port}`);
+  })
+}
+module.exports = app
